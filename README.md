@@ -7,8 +7,13 @@
 > *Official companion repository for NTU Coding Nights 3.0 (Night 1: Data Structures & Algorithms Workshop)*
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/evecount/algorithmic-thinking-starter/blob/main/notebooks/interactive_workbook.ipynb)
+[![Beginner Guide](https://img.shields.io/badge/Guide-How%20to%20Use-orange.svg)](./HOW_TO_USE.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Organized by WIT x IEEE](https://img.shields.io/badge/Organizers-NTU%20WIT%20%C3%97%20IEEE-9cf.svg)](#organizers--acknowledgments)
+
+> 🚀 **New to Python, GitHub, or Google Colab?**  
+> Read our step-by-step [**Beginner's How-To Guide (`HOW_TO_USE.md`)**](./HOW_TO_USE.md) (or view the [Web Documentation](https://evecount.github.io/algorithmic-thinking-starter/)) to learn how to run, edit, and save your solutions in Google Colab with zero installation!
 
 ---
 

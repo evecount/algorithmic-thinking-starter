@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Use the Interactive Workbook | NTU Coding Nights 3.0</title>
+  <meta name="description" content="Step-by-step beginner guide to launching and running the NTU Coding Nights DSA interactive workbook via Google Colab, VS Code, and PythonTutor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(18, 25, 40, 0.85);
+      --card-border: rgba(0, 225, 255, 0.15);
+      --accent: #00e1ff;
+      --accent-glow: rgba(0, 225, 255, 0.35);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --code-bg: #05080e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: radial-gradient(circle at top center, #111a2e 0%, #070a12 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 1rem 4rem 1rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 3.5rem 1rem 2rem;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      background: rgba(0, 225, 255, 0.08);
+      border: 1px solid var(--accent);
+      border-radius: 9999px;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 40%, #00e1ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-colab {
+      background: #f9ab00;
+      color: #0c121e;
+      box-shadow: 0 4px 20px rgba(249, 171, 0, 0.3);
+    }
+    .btn-colab:hover {
+      background: #ffb719;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(249, 171, 0, 0.5);
+    }
+
+    .btn-github {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-github:hover {
+      background: #334155;
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    p, li {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+    }
+
+    ol, ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li { margin-bottom: 0.5rem; }
+
+    .callout {
+      background: rgba(0, 225, 255, 0.05);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.25rem 0;
+    }
+
+    .callout-warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-left-color: var(--warning);
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--code-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      color: #38bdf8;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: #06090e;
+      border-radius: 50%;
+      font-weight: 900;
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .tile {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .tile h4 {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge-pill">NTU Coding Nights 3.0 • Night 1</div>
+      <h1>Interactive Workbook Guide</h1>
+      <p class="lead">A complete zero-panic beginner's guide to launching, editing, and verifying your solutions in Google Colab and local Python.</p>
+      
+      <div class="hero-actions">
+        <a class="btn btn-colab" href="https://colab.research.google.com/github/evecount/algorithmic-thinking-starter/blob/main/notebooks/interactive_workbook.ipynb" target="_blank" rel="noopener">
+          <span>▶</span> Open in Google Colab (1-Click)
+        </a>
+        <a class="btn btn-github" href="https://github.com/evecount/algorithmic-thinking-starter" target="_blank" rel="noopener">
+          <span>★</span> View on GitHub
+        </a>
+      </div>
+    </header>
+
+    <!-- SECTION 1: GOOGLE COLAB -->
+    <section class="card">
+      <h2><span class="step-number">1</span> Launching via Google Colab (Recommended)</h2>
+      <p>Google Colab runs entirely in your web browser. You do not need to install Python, Jupyter, or Git on your machine.</p>
+
+      <h3>Step 1: Open the Notebook</h3>
+      <p>Click the golden <strong>"Open in Google Colab"</strong> button at the top of this page or inside the GitHub repository.</p>
+
+      <div class="callout callout-warning">
+        <strong>⚠️ Crucial Step: Save a Copy to Google Drive</strong><br>
+        Colab initially opens in temporary "Playground" mode. To save your solutions permanently:
+        <br>Click <strong>File</strong> ➔ <strong>Save a copy in Drive</strong> in the top menu. This creates a personal copy in your Google Drive.
+      </div>
+
+      <h3>Step 2: How to Run Code</h3>
+      <ul>
+        <li>Click inside any code cell to select it.</li>
+        <li>Press <strong><code>Shift + Enter</code></strong> to execute the active cell and advance to the next one.</li>
+        <li>Or click the circular <strong><code>▶ Play</code></strong> icon on the left border of the cell.</li>
+      </ul>
+
+      <h3>Step 3: Solving & Testing</h3>
+      <p>Each problem has two cells: your starter template and an automated test suite. Replace the <code>pass</code> keyword with your code and run the test cell below it:</p>
+      
+      <pre><code>def contains_duplicate(nums: list[int]) -> bool:
+    seen = set()
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+    return False</code></pre>
+
+      <p>When you run the test cell and see <code>[PASS] All tests passed!</code>, your solution is verified!</p>
+    </section>
+
+    <!-- SECTION 2: RUNNING LOCALLY -->
+    <section class="card">
+      <h2><span class="step-number">2</span> Running Locally with VS Code & Python</h2>
+      <p>If you prefer an offline development environment on your laptop:</p>
+
+      <h3>1. Clone the Repository</h3>
+      <pre><code>git clone https://github.com/evecount/algorithmic-thinking-starter.git
+cd algorithmic-thinking-starter</code></pre>
+
+      <h3>2. Run the Benchmark Test Suite</h3>
+      <pre><code>python solutions.py</code></pre>
+
+      <h3>3. Open in VS Code</h3>
+      <pre><code>code .</code></pre>
+      <p>Open <code>notebooks/interactive_workbook.ipynb</code>. VS Code will prompt you to install the Python/Jupyter extension. Select your Python kernel in the top-right and run cells locally!</p>
+    </section>
+
+    <!-- SECTION 3: PYTHON TUTOR -->
+    <section class="card">
+      <h2><span class="step-number">3</span> Visualizing with PythonTutor</h2>
+      <p>If you are struggling to visualize how pointers move or how a Hash Map grows in memory:</p>
+      <ol>
+        <li>Visit <a href="https://pythontutor.com/visualize.html" target="_blank" style="color:var(--accent);">pythontutor.com</a>.</li>
+        <li>Select <strong>Python 3.11</strong>.</li>
+        <li>Paste your function code and test call.</li>
+        <li>Click <strong>Visualize Execution</strong> and step through line-by-line to watch call frames, pointer arrows, and dictionary buckets animate in real time!</li>
+      </ol>
+    </section>
+
+    <!-- SECTION 4: TROUBLESHOOTING -->
+    <section class="card">
+      <h2><span class="step-number">4</span> Common Beginner Errors & Fixes</h2>
+      
+      <div class="grid-2">
+        <div class="tile">
+          <h4>IndentationError</h4>
+          <p>Python requires consistent <strong>4-space indentation</strong>. Verify all lines inside <code>def</code>, <code>for</code>, and <code>if</code> blocks align perfectly.</p>
+        </div>
+        <div class="tile">
+          <h4>IndexError: Out of Range</h4>
+          <p>Occurs when <code>arr[i]</code> attempts to access an index beyond the array size. Always guard pointer loops: <code>while left &lt; right and ...</code></p>
+        </div>
+        <div class="tile">
+          <h4>AssertionError: Test Failed</h4>
+          <p>Your code returned an unexpected output for a specific edge case. Check if your solution handles empty strings or single-element lists properly.</p>
+        </div>
+        <div class="tile">
+          <h4>Infinite Execution Loop</h4>
+          <p>If a cell runs indefinitely without stopping, your <code>while</code> loop forgot to increment <code>left += 1</code> or decrement <code>right -= 1</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Presented by <strong>NTU Women In Tech</strong> &amp; <strong>IEEE NTU Student Branch</strong></p>
+      <p>Workshop Leader: <strong>Gwendalynn Lim Wan Ting</strong> (Eve Count Quantum Systems)</p>
+      <p style="margin-top:0.5rem;"><a href="https://github.com/evecount/algorithmic-thinking-starter">Return to GitHub Repository</a></p>
+    </footer>
+  </div>
+</body>
+</html>
