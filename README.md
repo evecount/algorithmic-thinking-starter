@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./NTU%20DSA%20Event%20Banner.png" alt="NTU Coding Nights - Data Structures & Algorithms Workshop" width="100%" style="border-radius: 8px;" />
+</p>
+
 # Algorithmic Thinking Starter
 > **Core Algorithmic Mechanics from First Principles**  
 > *Official companion repository for NTU Coding Nights 3.0 (Night 1: Data Structures & Algorithms Workshop)*
