@@ -15,7 +15,7 @@
 > 🚀 **New to Python or GitHub? Don't worry!**  
 > We have set everything up so you don't need to install anything on your computer. Just click the giant button below to open the interactive workbook in your browser:
 
-# [▶️ OPEN IN GOOGLE COLAB (1-Click)](https://colab.research.google.com/github/evecount/algorithmic-thinking-starter/blob/main/notebooks/interactive_workbook.ipynb)
+# [▶️ OPEN IN GOOGLE COLAB (1-Click)](https://colab.research.google.com/github/evecount/algorithmic-thinking-starter/blob/main/notebooks/interactive_workbook.ipynb) &nbsp;&nbsp;&nbsp; [📖 READ WORKBOOK GUIDE](https://evecount.github.io/algorithmic-thinking-starter/)
 
 > *(Make sure to click **File -> Save a copy in Drive** once it opens so you can save your work!)*
 
