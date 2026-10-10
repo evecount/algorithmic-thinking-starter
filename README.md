@@ -12,8 +12,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Organized by WIT x IEEE](https://img.shields.io/badge/Organizers-NTU%20WIT%20%C3%97%20IEEE-9cf.svg)](#organizers--acknowledgments)
 
-> 🚀 **New to Python, GitHub, or Google Colab?**  
-> Read our step-by-step [**Beginner's How-To Guide (`HOW_TO_USE.md`)**](./HOW_TO_USE.md) (or view the [Web Documentation](https://evecount.github.io/algorithmic-thinking-starter/)) to learn how to run, edit, and save your solutions in Google Colab with zero installation!
+> 🚀 **New to Python or GitHub? Don't worry!**  
+> We have set everything up so you don't need to install anything on your computer. Just click the giant button below to open the interactive workbook in your browser:
+
+# [▶️ OPEN IN GOOGLE COLAB (1-Click)](https://colab.research.google.com/github/evecount/algorithmic-thinking-starter/blob/main/notebooks/interactive_workbook.ipynb)
+
+> *(Make sure to click **File -> Save a copy in Drive** once it opens so you can save your work!)*
 
 ---
 
