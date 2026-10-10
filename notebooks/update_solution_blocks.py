@@ -41,7 +41,9 @@ def two_sum(nums: list[int], target: int) -> list[int]:
         # 3. Calculate exactly what number we need to hit the target
         complement = target - num
         
-        # 4. Check our map: Have we seen this exact complement before?
+        # 4. CRUCIAL TRAP: We must check the map BEFORE saving our current number!
+        # If we saved first, a number might incorrectly match with itself.
+        # Check our map: Have we seen this exact complement before?
         if complement in prev_map:
             # Yes! Return the index of the complement we saved, and our current index.
             return [prev_map[complement], i]
